@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HTML5 fundamentals - Digital Nurture Java FSE Module 1" />
+  <meta name="author" content="Digital Nurture Trainee" />
+  <title>Module 1 - HTML5 Fundamentals</title>
+</head>
+<body>
+  <!-- Semantic page structure -->
+  <header>
+    <h1>HTML5 Fundamentals</h1>
+    <nav aria-label="Primary navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#form">Registration</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#table">Table</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Semantic elements -->
+    <section id="about">
+      <h2>About Semantic HTML</h2>
+      <article>
+        <p>
+          HTML5 introduces semantic elements such as
+          <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+          <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>,
+          <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code> and
+          <code>&lt;footer&gt;</code> which describe the meaning of content.
+        </p>
+        <aside>
+          <strong>Tip:</strong> Semantic markup improves accessibility and SEO.
+        </aside>
+      </article>
+    </section>
+
+    <!-- Forms with HTML5 input types & validation -->
+    <section id="form">
+      <h2>Registration Form (HTML5 Validation)</h2>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Personal Details</legend>
+
+          <p>
+            <label for="fullname">Full Name</label><br />
+            <input type="text" id="fullname" name="fullname" placeholder="John Doe" required />
+          </p>
+          <p>
+            <label for="email">Email</label><br />
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </p>
+          <p>
+            <label for="phone">Phone</label><br />
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="10 digit number" />
+          </p>
+          <p>
+            <label for="dob">Date of Birth</label><br />
+            <input type="date" id="dob" name="dob" />
+          </p>
+          <p>
+            <label for="age">Age</label><br />
+            <input type="number" id="age" name="age" min="18" max="100" />
+          </p>
+          <p>
+            <label for="website">Website</label><br />
+            <input type="url" id="website" name="website" placeholder="https://" />
+          </p>
+          <p>
+            <label for="gender">Gender</label><br />
+            <select id="gender" name="gender">
+              <option value="">-- Select --</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </p>
+          <p>
+            <label for="bio">Short Bio</label><br />
+            <textarea id="bio" name="bio" rows="4" cols="40"></textarea>
+          </p>
+          <p>
+            <button type="submit">Register</button>
+            <button type="reset">Clear</button>
+          </p>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Media elements -->
+    <section id="media">
+      <h2>Media Elements</h2>
+      <figure>
+        <img src="https://via.placeholder.com/300x150" alt="Placeholder image" width="300" height="150" />
+        <figcaption>HTML5 &lt;figure&gt; with &lt;figcaption&gt;</figcaption>
+      </figure>
+
+      <audio controls>
+        <source src="sample.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <video controls width="320">
+        <source src="sample.mp4" type="video/mp4" />
+        Your browser does not support the video element.
+      </video>
+    </section>
+
+    <!-- Data table -->
+    <section id="table">
+      <h2>Data Table</h2>
+      <table border="1">
+        <caption>Module 1 Topics</caption>
+        <thead>
+          <tr><th>#</th><th>Topic</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>HTML5</td><td>Completed</td></tr>
+          <tr><td>2</td><td>CSS3</td><td>Completed</td></tr>
+          <tr><td>3</td><td>Bootstrap5</td><td>Completed</td></tr>
+          <tr><td>4</td><td>JavaScript</td><td>Completed</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Digital Nurture Java FSE &mdash; Module 1: HTML5</p>
+  </footer>
+</body>
+</html>

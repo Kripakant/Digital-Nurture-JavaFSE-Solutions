@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 1 - JavaScript Demo</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #1f2937; }
+    h1 { color: #4f46e5; }
+    section { margin-bottom: 2rem; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 8px; }
+    button { padding: 0.4rem 0.9rem; margin: 0.2rem; cursor: pointer; }
+    input { padding: 0.4rem; }
+    #output, #todoList { margin-top: 0.8rem; }
+    .done { text-decoration: line-through; color: #888; }
+    li { margin: 0.3rem 0; }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Fundamentals</h1>
+
+  <!-- Counter: events + state -->
+  <section>
+    <h2>1. Counter (Events &amp; DOM)</h2>
+    <button id="decBtn">-</button>
+    <span id="count">0</span>
+    <button id="incBtn">+</button>
+  </section>
+
+  <!-- Calculator: functions -->
+  <section>
+    <h2>2. Simple Calculator (Functions)</h2>
+    <input type="number" id="numA" placeholder="a" />
+    <input type="number" id="numB" placeholder="b" />
+    <button onclick="calc('+')">+</button>
+    <button onclick="calc('-')">-</button>
+    <button onclick="calc('*')">×</button>
+    <button onclick="calc('/')">÷</button>
+    <div id="output"></div>
+  </section>
+
+  <!-- To-do list: arrays + ES6 -->
+  <section>
+    <h2>3. To-Do List (Arrays &amp; ES6)</h2>
+    <input type="text" id="todoInput" placeholder="New task" />
+    <button id="addBtn">Add</button>
+    <ul id="todoList"></ul>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
