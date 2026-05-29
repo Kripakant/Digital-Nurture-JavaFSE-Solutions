@@ -1,43 +1,37 @@
-# Digital Nurture – Java FSE · Module 1 (Frontend)
+# Digital Nurture – Java FSE (Upskilling Solutions)
 
-Solutions for **Module 1** of the Cognizant Digital Nurture Java Full Stack Engineering program.
-This module covers front-end web development fundamentals.
+Solutions for the Cognizant **Digital Nurture – Java Full Stack Engineering** upskilling program.
 
-## 📂 Structure
+## 📦 Modules
+
+| Module | Topic | Folder | Status |
+|--------|-------|--------|--------|
+| **1** | Frontend – HTML5, CSS3, Bootstrap 5, JavaScript | [`Module1-Frontend/`](./Module1-Frontend) | ✅ Complete |
+| **2** | ANSI SQL using MySQL | [`Module2-SQL/`](./Module2-SQL) | ✅ Complete |
+| **3** | Core Java | [`Module3-CoreJava/`](./Module3-CoreJava) | ✅ Complete |
+
+## 📂 Repository Structure
 
 ```
-Module1-Frontend/
-├── 01-HTML5/        # Semantic HTML5, forms, media, tables
-│   └── index.html
-├── 02-CSS3/         # Flexbox, Grid, transitions, animations, responsive
-│   ├── index.html
-│   └── styles.css
-├── 03-Bootstrap5/   # Navbar, grid, cards, modal, forms (Bootstrap 5 CDN)
-│   └── index.html
-└── 04-JavaScript/   # DOM, events, functions, arrays, ES6
-    ├── index.html
-    └── app.js
+Digital-Nurture-JavaFSE/
+├── Module1-Frontend/
+│   ├── 01-HTML5/        # Semantic HTML, forms, media, tables
+│   ├── 02-CSS3/         # Flexbox, Grid, transitions, animations
+│   ├── 03-Bootstrap5/   # Navbar, grid, cards, modal (CDN)
+│   └── 04-JavaScript/   # DOM, events, ES6
+├── Module2-SQL/         # 7 ordered .sql scripts (schema → advanced)
+└── Module3-CoreJava/
+    └── src/             # basics, oop, collections, exceptions,
+                         #   strings, generics, functional
 ```
 
-## 📝 Topics Covered
+## ▶️ Quick Start
 
-| # | Topic        | Key Concepts |
-|---|--------------|--------------|
-| 1 | **HTML5**      | Semantic elements, forms & validation, media, tables |
-| 2 | **CSS3**       | Variables, box model, Flexbox, Grid, transitions, keyframe animations, media queries |
-| 3 | **Bootstrap 5**| Responsive grid, navbar, cards, modal, alerts, form controls |
-| 4 | **JavaScript** | DOM manipulation, event handling, functions, arrays, ES6 syntax |
+- **Module 1:** open any topic's `index.html` in a browser.
+- **Module 2:** `mysql -u root -p < Module2-SQL/01_schema_and_data.sql` (then run the rest in order).
+- **Module 3:** `cd Module3-CoreJava && javac -d out $(find src -name "*.java")` then `java -cp out <package>.<Class>`.
 
-## ▶️ How to Run
-
-Each topic is a standalone static page. Open the `index.html` in any browser:
-
-```bash
-# from the topic folder, e.g.
-start 01-HTML5/index.html        # Windows
-```
-
-No build step or dependencies required (Bootstrap loads via CDN).
+Each module folder has its own detailed `README.md`.
 
 ---
-*Module 1 completed as part of Digital Nurture Java FSE upskilling.*
+*Completed as part of the Digital Nurture Java FSE upskilling track.*

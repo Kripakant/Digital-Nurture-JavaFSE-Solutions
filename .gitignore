@@ -10,3 +10,9 @@ desktop.ini
 
 # Node (if added later)
 node_modules/
+
+# Java compiled output
+*.class
+out/
+bin/
+target/
