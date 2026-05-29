@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Feedback | Community Event Portal</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f3f4f6; color: #1f2937; margin: 0; line-height: 1.6; }
+    header { background: #0b3d91; color: #fff; padding: 16px 24px; }
+    header a { color: #ffd966; }
+    main { max-width: 640px; margin: 24px auto; padding: 0 20px; }
+    h1 { margin: 0; font-size: 1.5rem; }
+    .card { background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .field { margin-bottom: 16px; }
+    label { display: block; font-weight: bold; margin-bottom: 4px; }
+    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; }
+    button { background: #0b3d91; color: #fff; border: none; padding: 12px 20px; border-radius: 6px; font-size: 1rem; cursor: pointer; }
+    button:hover { background: #08306b; }
+    .msg { margin-top: 8px; font-size: 0.9rem; }
+    .error { color: #b00020; }
+    .ok { color: #0f5132; }
+    #enlargeImg { width: 200px; cursor: pointer; border: 3px solid #0b3d91; border-radius: 6px; transition: width 0.3s ease; }
+    #enlargeImg.big { width: 100%; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Event Feedback</h1>
+    <p style="margin:4px 0 0;"><a href="index.html">&larr; Back to Home</a></p>
+  </header>
+
+  <main>
+    <!-- Exercise 6: Event Feedback with Events Handling -->
+    <div class="card">
+      <p>We value your input. Help us improve future community events.</p>
+
+      <div class="field">
+        <label for="phone">Phone Number</label>
+        <!-- onblur validates the phone number -->
+        <input type="tel" id="phone" placeholder="10-digit number" onblur="validatePhone()" />
+        <div id="phoneMsg" class="msg"></div>
+      </div>
+
+      <div class="field">
+        <label for="eventSelect">Which event did you attend?</label>
+        <!-- onchange displays the selected event fee -->
+        <select id="eventSelect" onchange="showFee()">
+          <option value="">-- Select --</option>
+          <option value="0">Community Clean-Up Day (Free)</option>
+          <option value="15">Music Festival ($15)</option>
+          <option value="5">Farmers Market ($5)</option>
+          <option value="10">Charity Fun Run ($10)</option>
+        </select>
+        <div id="feeMsg" class="msg"></div>
+      </div>
+
+      <div class="field">
+        <label for="feedbackText">Your Feedback</label>
+        <!-- keyboard events count characters -->
+        <textarea id="feedbackText" rows="4" placeholder="Tell us what you thought..."
+                  onkeyup="countChars()"></textarea>
+        <div id="charCount" class="msg">0 characters</div>
+      </div>
+
+      <div class="field">
+        <p>Double-click the image below to enlarge it:</p>
+        <!-- ondblclick enlarges the image -->
+        <img id="enlargeImg" src="https://picsum.photos/id/1062/600/300"
+             alt="Community event photo" title="Double-click to enlarge"
+             ondblclick="toggleEnlarge()" />
+      </div>
+
+      <!-- onclick shows a confirmation -->
+      <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+      <div id="submitMsg" class="msg"></div>
+    </div>
+  </main>
+
+  <script>
+    // onblur — validate a 10-digit phone number
+    function validatePhone() {
+      const value = document.getElementById('phone').value.trim();
+      const msg = document.getElementById('phoneMsg');
+      const valid = /^\d{10}$/.test(value);
+      if (value === '') { msg.textContent = ''; return; }
+      msg.textContent = valid ? 'Phone number looks good.' : 'Please enter a valid 10-digit phone number.';
+      msg.className = 'msg ' + (valid ? 'ok' : 'error');
+    }
+
+    // onchange — display selected event fee
+    function showFee() {
+      const sel = document.getElementById('eventSelect');
+      const fee = sel.value;
+      const msg = document.getElementById('feeMsg');
+      if (fee === '') { msg.textContent = ''; return; }
+      msg.textContent = fee === '0' ? 'This event is free!' : 'Event fee: $' + fee;
+      msg.className = 'msg ok';
+    }
+
+    // keyboard events — count characters
+    function countChars() {
+      const len = document.getElementById('feedbackText').value.length;
+      document.getElementById('charCount').textContent = len + ' characters';
+    }
+
+    // ondblclick — enlarge image
+    function toggleEnlarge() {
+      document.getElementById('enlargeImg').classList.toggle('big');
+    }
+
+    // onclick — confirmation
+    function submitFeedback() {
+      const msg = document.getElementById('submitMsg');
+      msg.textContent = 'Thank you! Your feedback has been submitted.';
+      msg.className = 'msg ok';
+      console.log('Feedback submitted at', new Date().toISOString());
+    }
+  </script>
+</body>
+</html>

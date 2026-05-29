@@ -3,51 +3,194 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 1 - CSS3 Showcase</title>
+  <title>Community Event Portal | CSS3 Styled</title>
+
+  <!-- Exercise 5: Typography — include a Google Font via <link> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Exercise 1: Internal (embedded) <style> tag — define the body background.
+       Reusable styles live in the external stylesheet below. -->
+  <style>
+    /* Embedded style: subtle body background tint (overridden/extended by styles.css) */
+    body {
+      background-color: #eef2f7;
+    }
+  </style>
+
+  <!-- Exercise 1: External stylesheet linked here -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <h1>CSS3 Showcase</h1>
-    <p>Flexbox, Grid, Transitions, Animations &amp; Responsive Design</p>
+
+  <!-- ===== Banner header (ID selector + gradient) ===== -->
+  <header id="mainHeader">
+    <!-- Exercise 1: Inline style makes this one heading red -->
+    <h1 style="color: red;">Local Community Event Portal</h1>
+    <p>Discover, register for, and enjoy events across our city</p>
   </header>
 
-  <main>
-    <section class="cards">
-      <article class="card">
-        <h2>Box Model</h2>
-        <p>Margin, border, padding and content demonstrated with spacing.</p>
-      </article>
-      <article class="card">
-        <h2>Flexbox</h2>
-        <p>These cards are laid out using a responsive flex container.</p>
-      </article>
-      <article class="card">
-        <h2>Transitions</h2>
-        <p>Hover over any card to see a smooth lift transition.</p>
-      </article>
+  <!-- ===== Navigation (Exercise 6: list styling, bullets removed) ===== -->
+  <nav class="container" aria-label="Primary">
+    <ul class="nav-menu">
+      <li><a href="#events">Events</a></li>
+      <li><a href="#bulletin">Bulletin</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#signup">Sign Up</a></li>
+      <li><a href="#boxmodel">Layout Demo</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <!-- ===== Intro ===== -->
+    <section>
+      <p class="lead">
+        Welcome! This page demonstrates the CSS3 concepts from Module 1 — selectors,
+        color &amp; backgrounds, typography, links &amp; lists, tables, the box model,
+        multi-column text, and responsive design.
+      </p>
     </section>
 
-    <section class="grid-demo">
-      <h2>CSS Grid Layout</h2>
-      <div class="grid">
-        <div class="grid-item">1</div>
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>
+    <!-- ===== Event cards (Exercise 3 class selector, Exercise 8 box model) ===== -->
+    <section id="events">
+      <span class="section-title"><h2 style="color:#fff;margin:0;">Featured Events</h2></span>
+      <div class="card-row">
+        <article class="eventCard">
+          <h3>Summer Music Festival</h3>
+          <img class="responsive-img" src="https://picsum.photos/id/1011/300/180" alt="Music festival" style="width:100%;border-radius:6px;" />
+          <p class="event-description">
+            A weekend of live music in the central park. Bring your friends and family
+            for an unforgettable evening of local bands and food trucks.
+          </p>
+          <button class="cta-button">Register</button>
+        </article>
+
+        <article class="eventCard">
+          <h3>Community Clean-Up Day</h3>
+          <img class="responsive-img" src="https://picsum.photos/id/1027/300/180" alt="Clean up day" style="width:100%;border-radius:6px;" />
+          <p class="event-description">
+            Join your neighbours to keep our streets and parks beautiful. Gloves and
+            refreshments are provided by the city council.
+          </p>
+          <button class="cta-button">Register</button>
+        </article>
+
+        <article class="eventCard">
+          <h3>Weekly Farmers Market</h3>
+          <img class="responsive-img" src="https://picsum.photos/id/1035/300/180" alt="Farmers market" style="width:100%;border-radius:6px;" />
+          <p class="event-description">
+            Fresh local produce, handmade crafts, and artisan foods every Saturday
+            morning in the town square.
+          </p>
+          <button class="cta-button">Register</button>
+        </article>
       </div>
     </section>
 
-    <section class="animation-demo">
-      <h2>Keyframe Animation</h2>
-      <div class="pulse"></div>
+    <!-- ===== Links + Lists (Exercise 6) ===== -->
+    <section>
+      <span class="section-title"><h2 style="color:#fff;margin:0;">Why Attend?</h2></span>
+      <ul class="feature-list">
+        <li>Meet people in your neighbourhood</li>
+        <li>Support local businesses and artists</li>
+        <li>Free and low-cost activities for all ages</li>
+        <li>Learn new skills at workshops</li>
+      </ul>
+      <p>
+        Read our full
+        <a class="content-link" href="#">community guidelines</a>
+        or
+        <a class="content-link" href="#">volunteer opportunities</a>
+        page (styled with :link, :visited, :hover, :active).
+      </p>
     </section>
+
+    <!-- ===== Table (Exercise 7) ===== -->
+    <section id="schedule">
+      <span class="section-title"><h2 style="color:#fff;margin:0;">Event Schedule</h2></span>
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Music Festival</td><td>Jun 14</td><td>Central Park</td><td>$15</td></tr>
+          <tr><td>Clean-Up Day</td><td>Jun 21</td><td>Riverside</td><td>Free</td></tr>
+          <tr><td>Farmers Market</td><td>Every Sat</td><td>Town Square</td><td>$5</td></tr>
+          <tr><td>Kids Art Workshop</td><td>Jul 02</td><td>Library Hall</td><td>$8</td></tr>
+          <tr><td>Charity Fun Run</td><td>Jul 10</td><td>Lakeside Path</td><td>$10</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ===== Sign-up form (Exercise 8: outline on focus) ===== -->
+    <section id="signup">
+      <span class="section-title"><h2 style="color:#fff;margin:0;">Quick Sign-Up</h2></span>
+      <form class="form-demo" onsubmit="return false;">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name" />
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" />
+        <label for="notes">Notes</label>
+        <textarea id="notes" rows="3" placeholder="Anything we should know?"></textarea>
+        <p style="margin-top:12px;"><button class="cta-button" type="submit">Submit</button></p>
+        <p style="font-size:0.9rem;color:#555;">Tip: click a field to see the yellow <code>outline</code> (box-model demo).</p>
+      </form>
+    </section>
+
+    <!-- ===== Box model: visibility vs display (Exercise 8) ===== -->
+    <section id="boxmodel">
+      <span class="section-title"><h2 style="color:#fff;margin:0;">Box Model: visibility vs display</h2></span>
+      <div class="box-demo">
+        <div class="demo-box">Normal box</div>
+        <div class="demo-box is-hidden">visibility: hidden (space kept)</div>
+        <div class="demo-box is-removed">display: none (removed)</div>
+        <div class="demo-box">Another box</div>
+      </div>
+      <p style="font-size:0.9rem;color:#555;">
+        The <em>visibility: hidden</em> box is invisible but still occupies space;
+        the <em>display: none</em> box is removed entirely (notice the gap closes).
+      </p>
+    </section>
+
+    <!-- ===== Multi-column bulletin (Exercise 9) ===== -->
+    <section id="bulletin">
+      <span class="section-title"><h2 style="color:#fff;margin:0;">Community Bulletin</h2></span>
+      <div class="bulletin">
+        <p>
+          The city council is pleased to announce a packed calendar of events this season.
+          Residents of all ages are encouraged to take part in the many free and low-cost
+          activities planned throughout the summer months.
+        </p>
+        <p>
+          New this year is an expanded farmers market featuring more than forty local
+          vendors, a dedicated children's craft corner, and live acoustic performances
+          every Saturday morning in the town square.
+        </p>
+        <p>
+          Volunteers remain the heart of our community programme. If you would like to
+          help organise an event, lead a workshop, or simply lend a hand on the day,
+          please reach out to the events office.
+        </p>
+        <p>
+          For accessibility requests, parking information, and weather updates, check the
+          portal regularly. We look forward to seeing you at an event soon!
+        </p>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 Digital Nurture Java FSE &mdash; Module 1: CSS3</p>
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Local Community Event Portal &middot; Styled with CSS3 &middot;
+       <a href="#mainHeader">Back to top</a></p>
   </footer>
+
 </body>
 </html>

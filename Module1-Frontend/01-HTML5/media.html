@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promo Video | Community Event Portal</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f3f4f6; color: #1f2937; margin: 0; line-height: 1.6; }
+    header { background: #0b3d91; color: #fff; padding: 16px 24px; }
+    header a { color: #ffd966; }
+    main { max-width: 720px; margin: 24px auto; padding: 0 20px; }
+    h1 { margin: 0; font-size: 1.5rem; }
+    .card { background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    video { width: 100%; border-radius: 6px; background: #000; }
+    #videoStatus { margin-top: 12px; padding: 10px; background: #d1e7dd; color: #0f5132; border-radius: 6px; }
+    .note { font-size: 0.9rem; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>You're Invited! Watch our Event Promo</h1>
+    <p style="margin:4px 0 0;"><a href="index.html">&larr; Back to Home</a></p>
+  </header>
+
+  <main>
+    <!-- Exercise 7: Video Invite with Media Events -->
+    <div class="card">
+      <p>Get a sneak peek of what our community events are all about.</p>
+
+      <!-- oncanplay fires when the video is ready -->
+      <video id="promo" controls oncanplay="videoReady()" poster="https://picsum.photos/id/1080/720/360">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div id="videoStatus">Loading video&hellip;</div>
+      <p class="note">Note: a beforeunload warning will appear if you try to leave while the form is unfinished.</p>
+
+      <hr />
+      <h2 style="font-size:1.1rem;">Quick RSVP</h2>
+      <p class="note">Start typing — if you leave before submitting, the browser will warn you.</p>
+      <label for="rsvpName">Your name:</label>
+      <input type="text" id="rsvpName" oninput="markDirty()" style="padding:8px; width:100%; max-width:320px; margin-top:6px;" />
+      <p><button type="button" onclick="submitRsvp()" style="margin-top:10px; padding:10px 16px; background:#0b3d91; color:#fff; border:none; border-radius:6px; cursor:pointer;">Submit RSVP</button></p>
+    </div>
+  </main>
+
+  <script>
+    // oncanplay — video ready message
+    function videoReady() {
+      document.getElementById('videoStatus').textContent = 'Video ready to play!';
+    }
+
+    // onbeforeunload — warn if the form is unfinished
+    let formDirty = false;
+    function markDirty() { formDirty = true; }
+    function submitRsvp() {
+      formDirty = false;
+      alert('Thanks for your RSVP!');
+    }
+    window.onbeforeunload = function (e) {
+      if (formDirty) {
+        e.preventDefault();
+        e.returnValue = ''; // triggers the browser's "leave site?" warning
+        return '';
+      }
+    };
+  </script>
+</body>
+</html>

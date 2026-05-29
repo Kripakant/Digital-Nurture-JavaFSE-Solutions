@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Demo — Community Event Portal (Exercise 14)</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; }
+    .event-card { border: 1px solid #ccc; border-radius: .5rem; padding: 1rem; margin: 1rem 0; background: #f8f9fa; }
+    button { padding: .5rem 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <!-- Exercise 14: jQuery and JS Frameworks -->
+  <h1>jQuery Demo</h1>
+  <p>Demonstrates <code>.click()</code>, <code>.fadeIn()</code> and <code>.fadeOut()</code>.</p>
+
+  <button id="registerBtn">Toggle Event Card (fade)</button>
+
+  <div class="event-card" id="eventCard">
+    <h3>Community Clean-Up Day</h3>
+    <p>Join neighbours to tidy the local park. Gloves and bags provided!</p>
+  </div>
+
+  <!-- jQuery via CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    // Use $('#registerBtn').click(...) to handle click events
+    let visible = true;
+    $('#registerBtn').click(function () {
+      if (visible) {
+        $('#eventCard').fadeOut();   // .fadeOut()
+      } else {
+        $('#eventCard').fadeIn();    // .fadeIn()
+      }
+      visible = !visible;
+    });
+  </script>
+</body>
+</html>

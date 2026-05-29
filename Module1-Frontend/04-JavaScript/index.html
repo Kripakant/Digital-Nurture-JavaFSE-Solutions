@@ -1,51 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 1 - JavaScript Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Event Portal — JavaScript</title>
   <style>
-    body { font-family: "Segoe UI", Arial, sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #1f2937; }
-    h1 { color: #4f46e5; }
-    section { margin-bottom: 2rem; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 8px; }
-    button { padding: 0.4rem 0.9rem; margin: 0.2rem; cursor: pointer; }
-    input { padding: 0.4rem; }
-    #output, #todoList { margin-top: 0.8rem; }
-    .done { text-decoration: line-through; color: #888; }
-    li { margin: 0.3rem 0; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, Arial, sans-serif; margin: 0; color: #1f2937; background: #f9fafb; }
+    header { background: #0d6efd; color: #fff; padding: 1.5rem; text-align: center; }
+    main { max-width: 960px; margin: 1.5rem auto; padding: 0 1rem; }
+    section { background: #fff; border: 1px solid #e5e7eb; border-radius: .5rem; padding: 1.25rem; margin-bottom: 1.5rem; }
+    h2 { margin-top: 0; }
+    label { display: block; margin: .5rem 0 .25rem; font-weight: 600; }
+    input, select { width: 100%; padding: .5rem; border: 1px solid #d1d5db; border-radius: .375rem; }
+    .row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .row > div { flex: 1; min-width: 200px; }
+    button { cursor: pointer; padding: .5rem 1rem; border: none; border-radius: .375rem; background: #0d6efd; color: #fff; }
+    button.secondary { background: #6c757d; }
+    .events { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .event-card { border: 1px solid #e5e7eb; border-radius: .5rem; padding: 1rem; background: #fff; }
+    .event-card h3 { margin: 0 0 .25rem; }
+    .badge { display: inline-block; font-size: .75rem; padding: .15rem .5rem; border-radius: 1rem; background: #e0e7ff; color: #3730a3; }
+    .error { color: #dc2626; font-size: .85rem; display: block; min-height: 1rem; }
+    .spinner { display: none; margin: 1rem 0; font-style: italic; color: #6b7280; }
+    .msg { padding: .5rem; border-radius: .375rem; margin-top: .5rem; }
+    .msg.success { background: #dcfce7; color: #166534; }
+    .msg.fail { background: #fee2e2; color: #991b1b; }
   </style>
 </head>
 <body>
-  <h1>JavaScript Fundamentals</h1>
+  <header>
+    <h1>Local Community Event Portal</h1>
+    <p>View upcoming events, register, and filter by category or location.</p>
+  </header>
 
-  <!-- Counter: events + state -->
-  <section>
-    <h2>1. Counter (Events &amp; DOM)</h2>
-    <button id="decBtn">-</button>
-    <span id="count">0</span>
-    <button id="incBtn">+</button>
-  </section>
+  <main>
+    <!-- Filter controls (Exercise 8) -->
+    <section>
+      <h2>Find Events</h2>
+      <div class="row">
+        <div>
+          <label for="categoryFilter">Filter by Category</label>
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="music">Music</option>
+            <option value="workshop">Workshop</option>
+            <option value="sports">Sports</option>
+          </select>
+        </div>
+        <div>
+          <label for="locationFilter">Filter by Location</label>
+          <select id="locationFilter">
+            <option value="all">All Locations</option>
+            <option value="Community Hall">Community Hall</option>
+            <option value="City Park">City Park</option>
+            <option value="Sports Arena">Sports Arena</option>
+          </select>
+        </div>
+        <div>
+          <label for="searchBox">Quick Search (type a name)</label>
+          <input type="text" id="searchBox" placeholder="Press keys to search…">
+        </div>
+      </div>
+    </section>
 
-  <!-- Calculator: functions -->
-  <section>
-    <h2>2. Simple Calculator (Functions)</h2>
-    <input type="number" id="numA" placeholder="a" />
-    <input type="number" id="numB" placeholder="b" />
-    <button onclick="calc('+')">+</button>
-    <button onclick="calc('-')">-</button>
-    <button onclick="calc('*')">×</button>
-    <button onclick="calc('/')">÷</button>
-    <div id="output"></div>
-  </section>
+    <!-- Event list container (Exercise 7) -->
+    <section>
+      <h2>Upcoming Events</h2>
+      <div id="spinner" class="spinner">Loading events…</div>
+      <div id="eventList" class="events"></div>
+    </section>
 
-  <!-- To-do list: arrays + ES6 -->
-  <section>
-    <h2>3. To-Do List (Arrays &amp; ES6)</h2>
-    <input type="text" id="todoInput" placeholder="New task" />
-    <button id="addBtn">Add</button>
-    <ul id="todoList"></ul>
-  </section>
+    <!-- Registration form (Exercise 11) -->
+    <section>
+      <h2>Register for an Event</h2>
+      <form id="registrationForm" novalidate>
+        <div class="row">
+          <div>
+            <label for="userName">Name</label>
+            <input type="text" id="userName" name="userName">
+            <span class="error" id="nameError"></span>
+          </div>
+          <div>
+            <label for="userEmail">Email</label>
+            <input type="email" id="userEmail" name="userEmail">
+            <span class="error" id="emailError"></span>
+          </div>
+          <div>
+            <label for="eventSelect">Event</label>
+            <select id="eventSelect" name="eventSelect"></select>
+            <span class="error" id="eventError"></span>
+          </div>
+        </div>
+        <button type="submit" id="registerBtn">Register</button>
+        <div id="formMessage"></div>
+      </form>
+    </section>
 
-  <script src="app.js"></script>
+    <!-- Results area (Exercise 12 — AJAX/Fetch demo) -->
+    <section>
+      <h2>Results &amp; Server Response</h2>
+      <button id="loadApiBtn" class="secondary">Fetch Sample Posts (Fetch API)</button>
+      <div id="results"></div>
+    </section>
+  </main>
+
+  <!-- Exercise 1: link main.js -->
+  <script src="main.js"></script>
 </body>
 </html>

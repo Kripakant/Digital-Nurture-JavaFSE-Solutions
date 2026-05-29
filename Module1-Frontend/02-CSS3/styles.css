@@ -1,120 +1,298 @@
-/* ===========================================================
-   Module 1 - CSS3 Showcase
-   Demonstrates: variables, box model, flexbox, grid,
-   transitions, animations and responsive design
-   =========================================================== */
+/* =========================================================================
+   Local Community Event Portal — External Stylesheet (styles.css)
+   Module 1 · CSS3 Section
+   This file holds all reusable styles. Inline + internal styles are kept in
+   index.html (Exercise 1) to demonstrate the three CSS inclusion methods.
+   ========================================================================= */
 
-:root {
-  --primary: #4f46e5;
-  --primary-dark: #3730a3;
-  --bg: #f5f7fb;
-  --text: #1f2937;
-  --card-bg: #ffffff;
-  --radius: 10px;
-}
+/* Exercise 5: Typography — import a Google Font via @import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+/* -------------------------------------------------------------------------
+   Exercise 3: Selectors Playground
+   ------------------------------------------------------------------------- */
+
+/* Universal selector — reset margin & padding */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+/* Element selector — style all <h2> */
+h2 {
+  color: #0b3d91;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* ID selector — the main banner header */
+#mainHeader {
+  /* Exercise 4: gradient applied to a section header */
+  background: linear-gradient(135deg, #0b3d91 0%, #1565c0 100%);
+  color: #ffffff;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+/* Class selector — event containers */
+.eventCard {
+  /* Exercise 8: Box Model — border, padding, margin */
+  background: #ffffff;
+  border: 1px solid #d0d7e2;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex: 1 1 260px;
+}
+
+/* Grouping selector — style h3 and p together */
+h3, p {
   line-height: 1.6;
 }
 
-/* ---------- Hero with gradient ---------- */
-.hero {
-  text-align: center;
-  padding: 3rem 1rem;
+/* -------------------------------------------------------------------------
+   Exercise 4: Color & Background Styling
+   ------------------------------------------------------------------------- */
+
+/* Body background image with a fallback color, plus HEX/RGBA usage */
+body {
+  font-family: 'Poppins', Arial, sans-serif; /* Exercise 5: font-family */
+  color: #1f2937;                            /* HEX text color */
+  background-color: #eef2f7;                 /* fallback color */
+  background-image: linear-gradient(rgba(238, 242, 247, 0.92), rgba(238, 242, 247, 0.92)),
+                    url('https://picsum.photos/id/1015/1600/900');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+#mainHeader p {
+  color: rgba(255, 255, 255, 0.85); /* RGBA text color */
+  font-size: 1.05rem;
+  margin-top: 8px;
+}
+
+/* Section header bars with a gradient */
+.section-title {
+  background: linear-gradient(90deg, #0b3d91, #3f8efc);
   color: #fff;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-}
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  padding: 10px 16px;
+  border-radius: 6px;
+  display: inline-block;
+  margin: 24px 0 12px;
 }
 
-main {
-  max-width: 960px;
+/* -------------------------------------------------------------------------
+   Exercise 5: Typography — fonts and text
+   ------------------------------------------------------------------------- */
+
+#mainHeader h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-transform: uppercase;   /* text-transform */
+  letter-spacing: 2px;         /* letter-spacing */
+}
+
+.event-description {
+  font-size: 1rem;
+  font-style: italic;          /* font-style */
+  font-weight: 400;
+  text-align: justify;         /* text-align */
+  line-height: 1.7;            /* line-height */
+}
+
+.lead {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------
+   Exercise 2: Example formatted rule with a descriptive comment
+   ------------------------------------------------------------------------- */
+
+/* Style for main CTA button */
+.cta-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* -------------------------------------------------------------------------
+   Layout helpers
+   ------------------------------------------------------------------------- */
+.container {
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 24px;
 }
 
-section {
-  margin-bottom: 3rem;
-}
-section > h2 {
-  margin-bottom: 1rem;
-  border-left: 4px solid var(--primary);
-  padding-left: 0.6rem;
-}
-
-/* ---------- Flexbox cards ---------- */
-.cards {
+/* Exercise 10 (Bonus): Flexbox for the responsive card row */
+.card-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-}
-.card {
-  flex: 1 1 250px;
-  background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: var(--radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* ---------- CSS Grid ---------- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
-}
-.grid-item {
-  background: var(--primary);
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100px;
-  border-radius: var(--radius);
 }
 
-/* ---------- Keyframe animation ---------- */
-.pulse {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--primary);
-  margin: 1rem auto;
-  animation: pulse 1.5s infinite ease-in-out;
+/* -------------------------------------------------------------------------
+   Exercise 6: Link and List Styling
+   ------------------------------------------------------------------------- */
+
+/* Link pseudo-classes — order matters: link, visited, hover, active */
+.content-link:link    { color: #0b3d91; text-decoration: none; }
+.content-link:visited { color: #6a1b9a; }
+.content-link:hover   { color: #d9480f; text-decoration: underline; }
+.content-link:active  { color: #ff0000; }
+
+/* Bulleted list with custom list style and spacing */
+.feature-list {
+  list-style-type: square;          /* list-style-type */
+  list-style-position: inside;      /* list-style-position */
+  margin: 12px 0 12px 8px;
 }
-@keyframes pulse {
-  0%   { transform: scale(1);   opacity: 1;   }
-  50%  { transform: scale(1.4); opacity: 0.5; }
-  100% { transform: scale(1);   opacity: 1;   }
+.feature-list li {
+  padding: 6px 0;                   /* padding on list items */
+  margin-left: 10px;                /* margin on list items */
 }
 
-/* ---------- Footer ---------- */
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  background: #1f2937;
+/* Navigation menu — remove bullets, lay out horizontally */
+.nav-menu {
+  list-style-type: none;            /* remove bullets from nav menus */
+  display: flex;
+  flex-wrap: wrap;
+  background: #08306b;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.nav-menu li { margin: 0; }
+.nav-menu a {
+  display: block;
+  padding: 12px 18px;
+  color: #e6eefc;
+  text-decoration: none;
+}
+.nav-menu a:hover { background: #0b3d91; }
+
+/* -------------------------------------------------------------------------
+   Exercise 7: Table Styling
+   ------------------------------------------------------------------------- */
+.events-table {
+  width: 100%;
+  border-collapse: collapse;        /* border-collapse */
+  margin: 16px 0;
+  background: #fff;
+}
+.events-table th,
+.events-table td {
+  border: 1px solid #c9d3e0;
+  padding: 12px;                    /* padding */
+  text-align: center;               /* text-align: center */
+}
+.events-table th {
+  background: #0b3d91;
   color: #fff;
 }
+/* Zebra striping */
+.events-table tr:nth-child(even) {
+  background: #eef3fb;
+}
 
-/* ---------- Responsive ---------- */
-@media (max-width: 600px) {
-  .hero h1 { font-size: 1.8rem; }
-  .cards { flex-direction: column; }
+/* -------------------------------------------------------------------------
+   Exercise 8: Box Model & Layout Control
+   ------------------------------------------------------------------------- */
+
+/* Outline to highlight a selected/focused form field */
+.form-demo input:focus,
+.form-demo textarea:focus {
+  outline: 3px solid #ffb703;
+  outline-offset: 2px;
+}
+.form-demo label { display: block; font-weight: 600; margin: 10px 0 4px; }
+.form-demo input,
+.form-demo textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+/* visibility: hidden vs. display: none demonstration */
+.box-demo {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.demo-box {
+  background: #3f8efc;
+  color: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  min-width: 140px;
+  text-align: center;
+}
+.is-hidden   { visibility: hidden; } /* reserves space, but invisible */
+.is-removed  { display: none; }      /* removed from layout entirely */
+
+/* -------------------------------------------------------------------------
+   Exercise 9: Multiple Columns in Text (newspaper-style bulletin)
+   ------------------------------------------------------------------------- */
+.bulletin {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+  margin-top: 12px;
+  text-align: justify;
+}
+
+/* -------------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------------- */
+.site-footer {
+  background: #08306b;
+  color: #cdd9f0;
+  text-align: center;
+  padding: 20px;
+  margin-top: 32px;
+}
+.site-footer a { color: #ffd966; }
+
+/* -------------------------------------------------------------------------
+   Exercise 10: Responsive Web Design with Media Queries
+   Breakpoint for screens smaller than 768px (phones/tablets)
+   ------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  /* Stack navigation links vertically */
+  .nav-menu {
+    flex-direction: column;
+  }
+
+  /* Reduce heading and body font sizes */
+  #mainHeader h1 { font-size: 1.6rem; letter-spacing: 1px; }
+  #mainHeader p  { font-size: 0.95rem; }
+  body { font-size: 0.95rem; }
+
+  /* Cards stack full width using flexible % / vw units */
+  .eventCard {
+    flex: 1 1 100%;
+    margin: 10px 0;
+  }
+  .container { width: 100%; padding: 16px; }
+
+  /* Reduce image sizes */
+  .responsive-img { width: 90vw; height: auto; }
+
+  /* Single-column bulletin on small screens */
+  .bulletin { column-count: 1; }
 }

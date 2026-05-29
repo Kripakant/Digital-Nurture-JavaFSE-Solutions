@@ -1,135 +1,220 @@
 <!DOCTYPE html>
+<!-- Exercise 1: HTML5 Base Template -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="HTML5 fundamentals - Digital Nurture Java FSE Module 1" />
-  <meta name="author" content="Digital Nurture Trainee" />
-  <title>Module 1 - HTML5 Fundamentals</title>
+  <title>Local Community Event Portal | Home</title>
+
+  <!-- Exercise 3: Internal CSS for welcome banner + shared page styling -->
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      color: #1f2937;
+      background: #f3f4f6;
+      line-height: 1.6;
+    }
+    header.site-header {
+      background: #0b3d91;
+      color: #fff;
+      padding: 16px 24px;
+    }
+    header.site-header h1 { margin: 0; font-size: 1.6rem; }
+
+    /* Navigation */
+    nav.main-nav { background: #08306b; }
+    nav.main-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav.main-nav li { margin: 0; }
+    nav.main-nav a {
+      display: block;
+      padding: 12px 18px;
+      color: #e6eefc;
+      text-decoration: none;
+    }
+    nav.main-nav a:hover { background: #0b3d91; }
+
+    main { padding: 24px; max-width: 1000px; margin: 0 auto; }
+    section { margin-bottom: 40px; }
+    h2 { color: #0b3d91; border-bottom: 2px solid #cdd9f0; padding-bottom: 6px; }
+
+    /* Welcome banner styled uniquely for a logged-in user (blue background) */
+    #welcomeBanner {
+      background: #0b3d91;
+      color: #ffffff;
+      padding: 20px 24px;
+      border-radius: 8px;
+    }
+    /* .highlight class for visual emphasis */
+    .highlight {
+      background: #fff3cd;
+      color: #7a5b00;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    /* Image gallery */
+    table.gallery { border-collapse: collapse; width: 100%; }
+    table.gallery caption {
+      caption-side: top;
+      text-align: left;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #374151;
+    }
+    table.gallery td { padding: 10px; text-align: center; vertical-align: top; }
+    .event-img {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      border: 4px solid #0b3d91;
+      border-radius: 6px;
+    }
+    figcaption { font-size: 0.9rem; color: #4b5563; margin-top: 6px; }
+
+    footer.site-footer {
+      background: #08306b;
+      color: #cdd9f0;
+      text-align: center;
+      padding: 16px;
+      font-size: 0.9rem;
+    }
+    footer.site-footer a { color: #ffd966; }
+  </style>
 </head>
 <body>
-  <!-- Semantic page structure -->
-  <header>
-    <h1>HTML5 Fundamentals</h1>
-    <nav aria-label="Primary navigation">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#form">Registration</a></li>
-        <li><a href="#media">Media</a></li>
-        <li><a href="#table">Table</a></li>
-      </ul>
-    </nav>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <h1>Local Community Event Portal</h1>
+    <p style="margin:4px 0 0;">Your city council's hub for events, registration &amp; services</p>
   </header>
 
+  <!-- Exercise 2: Navigation and Linking -->
+  <!-- ===== Navigation ===== -->
+  <nav class="main-nav" aria-label="Primary">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+      <li><a href="media.html">Promo Video</a></li>
+      <li><a href="preferences.html">Preferences</a></li>
+      <li><a href="map.html">Find Events</a></li>
+      <!-- External help document opened in a new tab -->
+      <li><a href="help.html" target="_blank" rel="noopener">Help &#8599;</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== Main ===== -->
   <main>
-    <!-- Semantic elements -->
-    <section id="about">
-      <h2>About Semantic HTML</h2>
-      <article>
+
+    <!-- Exercise 3: Welcome Message with Styling and ID/Class -->
+    <section id="home">
+      <div id="welcomeBanner">
+        <h2 style="color:#fff; border:none; margin-top:0;">Welcome back, resident!</h2>
         <p>
-          HTML5 introduces semantic elements such as
-          <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
-          <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>,
-          <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code> and
-          <code>&lt;footer&gt;</code> which describe the meaning of content.
+          Thanks for being an active member of our community.
+          <!-- Inline styled special offer span: red + bold -->
+          <span style="color:#ff4d4d; font-weight:bold;">Special offer:</span>
+          Register for any two events this month and get the
+          <span class="highlight">third event free</span>!
         </p>
-        <aside>
-          <strong>Tip:</strong> Semantic markup improves accessibility and SEO.
-        </aside>
-      </article>
+      </div>
     </section>
 
-    <!-- Forms with HTML5 input types & validation -->
-    <section id="form">
-      <h2>Registration Form (HTML5 Validation)</h2>
-      <form action="#" method="post">
-        <fieldset>
-          <legend>Personal Details</legend>
+    <!-- Exercise 2: Events section target -->
+    <section id="events">
+      <h2>Upcoming Events</h2>
+      <p>
+        Explore what's happening around town. Use the
+        <span class="highlight">navigation menu</span> above to register, leave feedback,
+        or find events near you.
+      </p>
 
-          <p>
-            <label for="fullname">Full Name</label><br />
-            <input type="text" id="fullname" name="fullname" placeholder="John Doe" required />
-          </p>
-          <p>
-            <label for="email">Email</label><br />
-            <input type="email" id="email" name="email" placeholder="you@example.com" required />
-          </p>
-          <p>
-            <label for="phone">Phone</label><br />
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="10 digit number" />
-          </p>
-          <p>
-            <label for="dob">Date of Birth</label><br />
-            <input type="date" id="dob" name="dob" />
-          </p>
-          <p>
-            <label for="age">Age</label><br />
-            <input type="number" id="age" name="age" min="18" max="100" />
-          </p>
-          <p>
-            <label for="website">Website</label><br />
-            <input type="url" id="website" name="website" placeholder="https://" />
-          </p>
-          <p>
-            <label for="gender">Gender</label><br />
-            <select id="gender" name="gender">
-              <option value="">-- Select --</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </p>
-          <p>
-            <label for="bio">Short Bio</label><br />
-            <textarea id="bio" name="bio" rows="4" cols="40"></textarea>
-          </p>
-          <p>
-            <button type="submit">Register</button>
-            <button type="reset">Clear</button>
-          </p>
-        </fieldset>
-      </form>
-    </section>
-
-    <!-- Media elements -->
-    <section id="media">
-      <h2>Media Elements</h2>
-      <figure>
-        <img src="https://via.placeholder.com/300x150" alt="Placeholder image" width="300" height="150" />
-        <figcaption>HTML5 &lt;figure&gt; with &lt;figcaption&gt;</figcaption>
-      </figure>
-
-      <audio controls>
-        <source src="sample.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-
-      <video controls width="320">
-        <source src="sample.mp4" type="video/mp4" />
-        Your browser does not support the video element.
-      </video>
-    </section>
-
-    <!-- Data table -->
-    <section id="table">
-      <h2>Data Table</h2>
-      <table border="1">
-        <caption>Module 1 Topics</caption>
-        <thead>
-          <tr><th>#</th><th>Topic</th><th>Status</th></tr>
-        </thead>
+      <!-- Exercise 4: Image Gallery for Community Events -->
+      <table class="gallery">
+        <caption>Gallery: Highlights from past community events</caption>
         <tbody>
-          <tr><td>1</td><td>HTML5</td><td>Completed</td></tr>
-          <tr><td>2</td><td>CSS3</td><td>Completed</td></tr>
-          <tr><td>3</td><td>Bootstrap5</td><td>Completed</td></tr>
-          <tr><td>4</td><td>JavaScript</td><td>Completed</td></tr>
+          <tr>
+            <td>
+              <figure style="margin:0;">
+                <img class="event-img" src="https://picsum.photos/id/1011/260/170"
+                     alt="Crowd at the summer music festival"
+                     title="Summer Music Festival 2025" />
+                <figcaption>Summer Music Festival</figcaption>
+              </figure>
+            </td>
+            <td>
+              <figure style="margin:0;">
+                <img class="event-img" src="https://picsum.photos/id/1027/260/170"
+                     alt="Volunteers at the community clean-up day"
+                     title="Community Clean-Up Day" />
+                <figcaption>Community Clean-Up Day</figcaption>
+              </figure>
+            </td>
+            <td>
+              <figure style="margin:0;">
+                <img class="event-img" src="https://picsum.photos/id/1035/260/170"
+                     alt="Local farmers market stalls"
+                     title="Farmers Market" />
+                <figcaption>Weekly Farmers Market</figcaption>
+              </figure>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <figure style="margin:0;">
+                <img class="event-img" src="https://picsum.photos/id/1043/260/170"
+                     alt="Children's art workshop"
+                     title="Kids Art Workshop" />
+                <figcaption>Kids Art Workshop</figcaption>
+              </figure>
+            </td>
+            <td>
+              <figure style="margin:0;">
+                <img class="event-img" src="https://picsum.photos/id/1060/260/170"
+                     alt="Charity fun run participants"
+                     title="Charity Fun Run" />
+                <figcaption>Charity Fun Run</figcaption>
+              </figure>
+            </td>
+            <td>
+              <figure style="margin:0;">
+                <img class="event-img" src="https://picsum.photos/id/1074/260/170"
+                     alt="Evening food fair with lights"
+                     title="Street Food Fair" />
+                <figcaption>Street Food Fair</figcaption>
+              </figure>
+            </td>
+          </tr>
         </tbody>
       </table>
     </section>
+
+    <!-- Exercise 2: Contact section target -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>City Council Events Office &mdash; 100 Town Hall Square.</p>
+      <p>Email: <a href="mailto:events@citycouncil.gov">events@citycouncil.gov</a> | Phone: (555) 123-4567</p>
+    </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 Digital Nurture Java FSE &mdash; Module 1: HTML5</p>
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Local Community Event Portal &middot;
+       <a href="help.html" target="_blank" rel="noopener">Need help?</a></p>
   </footer>
+
 </body>
 </html>
